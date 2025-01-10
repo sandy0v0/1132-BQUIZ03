@@ -8,11 +8,11 @@ class DB{
     protected $dsn="mysql:host=localhost;charset=utf8;dbname=db14-3";
     protected $pdo;
     protected $table;
-    public static  $type=[
-        1=>'健康新知',
-        2=>'菸害防治',
-        3=>'癌症防治',
-        4=>'慢性病防治'
+    public static $level=[
+        1=>'普遍級',
+        2=>'輔導級',
+        3=>'保護級',
+        4=>'限制級'
     ];
 
     // 建構式construct，    指定運算子=　　，this=DB

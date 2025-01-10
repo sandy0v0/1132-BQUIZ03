@@ -58,5 +58,12 @@ $(".show").on("click",function(){
     })
 })
 
+$(".del").on("click",function(){
+    let id=$(this).data('id');
+    $.post("./api/del.php",{table:'Movie',id},()=>{
+        location.reload();
+    })
+})
+
 </script>
 

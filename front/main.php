@@ -53,11 +53,24 @@
 .icons{
     width:320px;
     display:flex;
+    overflow:hidden;
+    position: relative;
 }
 .icon{
     width:80px;
     height:100px;
-    background:#ccc;
+    /* flex-shrink:0;讓圖片不會因為flex壓縮, 並讓圖片填滿容器80的寬度 */
+    flex-shrink:0;
+    text-align: center;
+    /* 要加position:relative定位效果,才能夠製作動畫 */
+    position:relative;
+}
+.icon img{
+    width:70px;
+    height:80px;
+}
+.icon div{
+    font-size:12px;
 }
 </style>
 
@@ -82,11 +95,15 @@
             <div class="controls">
                 <div class='left'></div>
                 <div class='icons'>
-                    <div class="icon"></div>
-                    <div class="icon"></div>
-                    <div class="icon"></div>
-                    <div class="icon"></div>
-                </div>                    
+                    <?php 
+                        foreach($posters as $idx => $poster):
+                    ?>
+                    <div class="icon">
+                        <img src="./upload/<?=$poster['img'];?>">
+                        <div><?=$poster['name'];?></div>
+                    </div>
+                    <?php endforeach;?>
+                </div>               
                 <div class='right'></div>
             </div>
         </div>
@@ -94,7 +111,8 @@
 </div>
 
 <script>
-$(".poster").eq(0).show();
+    // 將圖片抓出來,並show第一張圖片
+    $(".poster").eq(0).show();
 
 </script>
 

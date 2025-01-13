@@ -151,11 +151,24 @@
     let total=$(".icon").length;
     let p=0;
     $(".left,.right").on("click",function(){
-        if((p+1)<=(total-4)){
-            p++;
-            $(".icon").animate({right:80*p});
+        if($(this).hasClass('left')){
+            /* 以下是原始的寫法
+                if(p-1>=0){
+                p--;
+            }
+            */
+            // 以下這是三元運算式, 比較精簡的寫法
+            p=(p-1>=0)?p-1:0;
+        }else{
+            /* if((p+1)<=(total-4)){
+                p++;
+            */
+            p=(p+1<=total-4)?p+1:total-4;
         }
-    })
+    
+    // console.log(p);
+    $(".icon").animate({right:80*p});
+})
 
 
 </script>

@@ -118,12 +118,15 @@
         sliders();
     }, 2500);
 
-    function sliders(){
+    function sliders(next=-1){
         let now=$(".poster:visible").index();
-        let next=($(".poster").length==now+1)?0:now+1;
+        if(next==-1){
+            next=($(".poster").length==now+1)?0:now+1;    
+        }
         let ani=$(".poster").eq(next).data('ani');
         // 在點擊.poster時，.eq(next)代表用下一張的動畫做轉場的效果
         //console.log(now,next)
+        console.log(now,next,ani)
 
         switch(ani){
             case 1:
@@ -184,6 +187,10 @@ $(".icons").hover(
     }
 )
 
+$(".icon").on("click",function(){
+    let next=$(this).index();
+    sliders(next);
+})
 </script>
 
 <div class="half">

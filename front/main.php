@@ -125,8 +125,8 @@
         }
         let ani=$(".poster").eq(next).data('ani');
         // 在點擊.poster時，.eq(next)代表用下一張的動畫做轉場的效果
-        //console.log(now,next)
-        console.log(now,next,ani)
+        // console.log(now,next)
+        // console.log(now,next,ani)
 
         switch(ani){
             case 1:

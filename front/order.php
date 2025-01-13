@@ -62,4 +62,11 @@ function getMovies(){
         }
     })
 }
+
+function getDays(){
+    $.get("api/get_days.php",{movie:$("#movie").val()},function(days){
+        $("#date").html(days);
+    })
+}
+
 </script>

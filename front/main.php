@@ -122,6 +122,7 @@
         let now=$(".poster:visible").index();
         let next=($(".poster").length==now+1)?0:now+1;
         let ani=$(".poster").eq(next).data('ani');
+        // 在點擊.poster時，.eq(next)代表用下一張的動畫做轉場的效果
         //console.log(now,next)
 
         switch(ani){
@@ -146,6 +147,16 @@
             break;
         }
     }
+
+    let total=$(".icon").length;
+    let p=0;
+    $(".left,.right").on("click",function(){
+        if((p+1)<=(total-4)){
+            p++;
+            $(".icon").animate({right:80*p});
+        }
+    })
+
 
 </script>
 

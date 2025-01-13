@@ -52,6 +52,10 @@ getMovies();
 let id=new URLSearchParams(location.href).get('id');
 // console.log(id);
 
+$("#movie").on("change",function(){
+    getDays();
+})
+
 function getMovies(){
     $.get("api/get_movies.php",function(movies){
         console.log(movies);
@@ -60,6 +64,10 @@ function getMovies(){
         if(parseInt(id)>0){
             $(`#movie option[value='${id}']`).prop('selected',true);
         }
+
+        // 當我選定電影時,會連動觸發抓取該電影可訂票的日期
+        // 註冊電影選單改變事件,觸發getDays()改變日期選單
+        getDays();
     })
 }
 

@@ -170,6 +170,19 @@
     $(".icon").animate({right:80*p});
 })
 
+$(".icons").hover(
+    // 兩個function分別為(移入/移出)各自要做的事情
+    function(){
+        // 滑鼠移入時,暫停動畫
+        clearInterval(slider);
+    },
+    function(){
+        // 滑鼠移出時,過2.5秒後,繼續動畫
+        slider=setInterval(() => {
+            sliders();
+        },2500);  
+    }
+)
 
 </script>
 

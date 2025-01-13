@@ -1,6 +1,6 @@
 <?php include_once "db.php";
 
-$movie=$_Movie->find($_GET['movie']);
+$movie=$Movie->find($_GET['movie']);
 $date=$_GET['date'];
 
 
@@ -12,13 +12,17 @@ $sess=[
     '5'=>"22:00~24:00",
 ];
 
-// G不補零的24H的"時"
-$now=date("G");
+// G不補零的24H的"時" G(0~23)
+$now=date("G")-13;
+
+$start=ceil($now/2)+1;
+
+$seats=20;
 
 
-for($i=0;$i<=5;$i++){
-    echo "<option value=''>";
-    echo "       剩餘座位   ";
+for($i=$start;$i<=5;$i++){
+    echo "<option value='{$sess[$i]}'>";
+    echo "{$sess[$i]} 剩餘座位 $seats";
     echo "</option>";
 }
 

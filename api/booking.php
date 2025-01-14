@@ -42,14 +42,40 @@
 }
 
 </style>
-<?php  include_once "db.php";?>
+<?php  include_once "db.php";
+
+$rows=$Order->all(['movie'=>$_GET['name'],'date'=>$_GET['date'],'session'=>$_GET['session']]);
+// 所有陣列合併起來,存到最上面的$seats[]空陣列中
+
+$seats=[];
+foreach($rows as $row){
+    $tmp=unserialize($row['seats']);
+    $seats=array_merge($seats,$tmp);
+}
+//dd($seats);
+
+// 推播 :ajax在訂票系統中(每兩秒),如果有人先勾選,就先跟資料庫要資料並顯示,已被勾選(增加用戶體驗)
+?>
 
 <div id="info">
     <?php 
         for($i=0;$i<20;$i++){
-            echo "<div class='seat null'>";
+            // 如果有在陣列裡,代表被訂走了故class放在booked,否則放在null
+            $booked=(in_array($i,$seats))?"booked":"null";
+            echo "<div class='seat $booked'>";
+            
+            /* 以下是原始的寫法 
+            if(in_array($i,$seats)){
+                echo "<div class='seat booked'>";
+            }else{
+                echo "<div class='seat null'>";
+            } 
+            */
+
             echo  floor($i/5)+1 ."排".($i%5+1)."號";
-            echo "<input type='checkbox' class='chk' value='$i'>";
+            if(!in_array($i,$seats)){
+                echo "<input type='checkbox' class='chk' value='$i'>";
+            }
             echo "</div>";
         }
     ?>

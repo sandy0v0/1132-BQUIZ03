@@ -58,7 +58,7 @@
 <div id="movieInfo">
     <div>您選擇的電影是：<?=$_GET['name'];?></div>
     <div>您選擇的時刻是：<?=$_GET['date']."&nbsp;&nbsp;".$_GET['session'];?></div>
-    <div>您已經<span id='tickets'></span>勾選張票，最多可以購買四張票</div>
+    <div>您已經勾選<span id='tickets'></span>張票，最多可以購買四張票</div>
     <div class='ct'>
         <button onclick="$('#booking,#order').toggle()">上一步</button>
         <button onclick="checkout()">訂購</button>
@@ -67,25 +67,24 @@
 
 <script>
 let seats=new Array();
+//let num={1:'一',2:'二',3:'三',4:'四'};  //如果想要把數字變國字,把這段打開
 
 $(".chk").on("change",function(){
     // seats.push($(this).val());
     if($(this).prop('checked')){
         if(seats.length>3){
             alert("最多只能選四張票");
+            // 並在他預計點選第五個勾時,將勾選狀態改為false,因為checked在function前就先執行了
             $(this).prop('checked',false)
         }else{
             seats.push($(this).val())
         }
     }else{
         seats.splice(seats.indexOf($(this).val()),1)
-
     }
-    
-    
-    console.log(seats);
-
-
+    $("#tickets").text(seats.length)
+    //$("#tickets").text(num[seats.length]) //如果想要把數字變國字,把這段打開
+    //console.log(seats)
 
 })
 

@@ -64,3 +64,29 @@
         <button onclick="checkout()">訂購</button>
     </div>
 </div>
+
+<script>
+let seats=new Array();
+
+$(".chk").on("change",function(){
+    // seats.push($(this).val());
+    if($(this).prop('checked')){
+        if(seats.length>3){
+            alert("最多只能選四張票");
+            $(this).prop('checked',false)
+        }else{
+            seats.push($(this).val())
+        }
+    }else{
+        seats.splice(seats.indexOf($(this).val()),1)
+
+    }
+    
+    
+    console.log(seats);
+
+
+
+})
+
+</script>

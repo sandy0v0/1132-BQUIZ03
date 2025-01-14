@@ -23,7 +23,7 @@
         padding:5px 0;
     }
     .header div{
-        /* 100/7 = 14.2%  */
+        /* 寬度: 100/7 = 14.2%  */
         width:14.2%;
         text-align:center;
     }
@@ -64,12 +64,3 @@
     <hr>
     <?php endforeach; ?>
 </div>
-
-
-
-
-
-
-
-
-

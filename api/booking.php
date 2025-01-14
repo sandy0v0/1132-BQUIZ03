@@ -88,4 +88,17 @@ $(".chk").on("change",function(){
 
 })
 
+function checkout(){
+    // 用這個(movie['seats']=seats;)才可以給值
+    movie.seats=seats;
+    //console.log(movie)
+    $.post("api/checkout.php",movie,function(res){
+        console.log(res)
+    })
+}
+
+
+
+
+
 </script>

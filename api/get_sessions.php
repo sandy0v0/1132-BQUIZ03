@@ -15,7 +15,7 @@ $sess=[
 // G不補零的24H的"時" G(0~23)
 $now=date("G")-13;
 
-$start=ceil($now/2)+1;
+$start=($now>0)?ceil($now/2)+1:1;
 
 $seats=20;
 

@@ -15,7 +15,7 @@ foreach($rows as $idx => $row):
         <input type="text" name="name[]" value="<?=$row['name'];?>">
         </div>
     <div style="width:25%">
-    <?php if($row['id']!=$prev):?>
+        <?php if($row['id']!=$prev):?>
         <input type="button" value="往上" class='sw' data-id="<?=$row['id'];?>" data-sw="<?=$prev;?>">
         <?php endif;?>
         <?php if($row['id']!=$next):?>

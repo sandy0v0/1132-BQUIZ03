@@ -1,14 +1,11 @@
 <?php 
 
-
-
 if(isset($_POST['acc'])){
 
     if($_POST['acc']=='admin' && $_POST['pw']=='1234'){
 
     // if 後面加 [分號;] 代表後面的全部東西都刪除
     // if(  '1');  =='admin' && $_POST['pw']=='1234'){
-
 
        $_SESSION['login']=1;
    }else{

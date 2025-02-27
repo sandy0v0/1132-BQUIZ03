@@ -7,7 +7,7 @@ foreach($rows as $idx=> $row):
     $next=($idx!=(count($rows)-1))?$rows[$idx+1]['id']:$row['id'];
 ?>
 <!-- 垂直置中 align-items:center -->
-<div style="display:flex;align-items:center">
+<div style="display:flex;align-items:center" class='movie-item'>
     <div style="width:10%;">
         <img src="./upload/<?=$row['poster'];?>" style="width:80px;height:100px;">
     </div>
